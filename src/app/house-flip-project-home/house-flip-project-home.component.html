@@ -1,0 +1,10 @@
+<ActionBar class="action-bar primary">
+    <Label class="action-bar-title" text="{{projectDetail.project_name}}" class="text-uppercase text-2xl"></Label>
+</ActionBar>
+
+<StackLayout >
+    <Image src="{{CDN_URL}}{{projectDetail.cloudinary_publicid}}"></Image>
+
+    <Label class="text-primary text-xl m-l-12 m-t-12" text="{{projectDetail.street_address}}"></Label>
+    <Label text="{{projectDetail.city}}, {{projectDetail.state}} {{projectDetail.zip_code}} "></Label>
+</StackLayout>
