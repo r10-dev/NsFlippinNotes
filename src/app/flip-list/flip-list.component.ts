@@ -3,7 +3,7 @@ import {FlippinNotesService} from "~/app/services/flippin-notes.service";
 import { fromObject, fromObjectRecursive, Observable, PropertyChangeData } from "tns-core-modules/data/observable";
 import { Router } from "@angular/router";
 
-import {Project} from "~/app/models/project";
+import { Project } from "~/app/models/project_models";
 import {RadSideDrawer} from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 @Component({

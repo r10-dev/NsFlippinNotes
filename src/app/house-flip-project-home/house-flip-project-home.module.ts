@@ -3,11 +3,13 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { HouseFlipProjectHomeComponent } from "./house-flip-project-home.component";
 import {HouseFlipProjectHomeRoutingModule} from "~/app/house-flip-project-home/house-flip-project-home-routing.module";
+import { NgShadowModule} from "nativescript-ngx-shadow";
 
 @NgModule({
     imports: [
         NativeScriptModule,
-        HouseFlipProjectHomeRoutingModule
+        HouseFlipProjectHomeRoutingModule,
+        NgShadowModule
     ],
     declarations: [
         HouseFlipProjectHomeComponent

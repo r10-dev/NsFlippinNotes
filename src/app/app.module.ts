@@ -10,6 +10,8 @@ import {NativeScriptModule} from "nativescript-angular/nativescript.module";
 import {HomeModule} from "~/app/home/home.module";
 import {FlipListModule} from "~/app/flip-list/flip-list.module";
 import {HouseFlipProjectHomeModule} from "~/app/house-flip-project-home/house-flip-project-home.module";
+import { RoomDetailComponent } from '~/app/room-detail/room-detail.component';
+import { RoomsListComponent } from './rooms-list/rooms-list.component';
 
 @NgModule({
     bootstrap: [
@@ -27,6 +29,8 @@ import {HouseFlipProjectHomeModule} from "~/app/house-flip-project-home/house-fl
     ],
     declarations: [
         AppComponent,
+        RoomDetailComponent,
+        RoomsListComponent,
     ],
     providers: [FlippinNotesService],
     schemas: [

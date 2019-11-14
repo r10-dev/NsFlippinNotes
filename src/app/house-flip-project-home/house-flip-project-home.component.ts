@@ -1,7 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from '@angular/router';
-import { Project } from '~/app/models/project';
+import {Project, Room} from '~/app/models/project_models';
 import {FlippinNotesService} from "~/app/services/flippin-notes.service";
+import { Router } from "@angular/router";
+import {Observable} from "tns-core-modules/data/observable";
 
 /* ***********************************************************
 * Before you can navigate to this page from your app, you need to reference this page's module in the
@@ -17,24 +19,34 @@ import {FlippinNotesService} from "~/app/services/flippin-notes.service";
 })
 export class HouseFlipProjectHomeComponent implements OnInit {
     id: number;
-
+    roomsGridLayout: string;
     projectDetail: Project;
     CDN_URL = 'https://res.cloudinary.com/erickroberts-com/image/upload/v1567471662/';
-    constructor( private route:ActivatedRoute, private cms: FlippinNotesService) {
+    // @ts-ignore
+    project: Observable<Project>;
+    rooms: Room[];
+    constructor( private route:ActivatedRoute, private cms: FlippinNotesService, private router: Router) {
         /* ***********************************************************
         * Use the constructor to inject app services that you need in this component.
+        * whny
         *************************************************************/
+    }
+    routerAction(id: any) {
+        this.router.navigate(["room-detail", id])
     }
 
     ngOnInit(): void {
         this.route.params.subscribe(params => {
             this.id = params['id'];
         });
-       this.cms.getProject(this.id).subscribe(
-           data => {
-               this.projectDetail = <Project>data;
-           }
-       );
-    }
+        this.roomsGridLayout = "auto";
+        this.cms.getProject(this.id).subscribe(data => {
+            this.projectDetail = data;
+            this.cms.getProjectRoomList(this.id).subscribe(data => {
+                this.rooms = data;
+            });
+        });
 
+
+    }
 }

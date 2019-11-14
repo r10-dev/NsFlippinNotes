@@ -1,8 +1,33 @@
 // Place any CSS rules you want to apply on both iOS and Android here.
 // This is where the vast majority of your CSS code goes.
 // Font icon class
-.fa {
-    font-family: "FontAwesome";
+
+/*
+    File name: fa-regular-400.ttf
+    Font name: Font Awesome 5 Free
+*/
+
+
+
+.round-btn {
+    border-radius: 100%;
+}
+.good-btn{
+
+    margin: 2%;
+}
+.small-btn {
+    margin: 2%;
+
+}
+.bg-green{
+    background-color: #06CE6A;
+}
+.bg-blue {
+    background-color: #4781FE;
+}
+.bg-yellow{
+    background-color: gold;
 }
 // Common page class
 .page-content {
@@ -23,6 +48,9 @@
 }
 .text-primary {
     color: $midnight-dark;
+}
+.text-gray {
+    color: $grey-dark;
 }
 
 

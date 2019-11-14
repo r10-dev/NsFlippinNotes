@@ -2,9 +2,61 @@
     <Label class="action-bar-title" text="{{projectDetail.project_name}}" class="text-uppercase text-2xl"></Label>
 </ActionBar>
 
-<StackLayout >
-    <Image src="{{CDN_URL}}{{projectDetail.cloudinary_publicid}}"></Image>
+<GridLayout rows="175, *, 100">
+    <FlexboxLayout flexDirection="row" justifyContent="flex-start" class="m-y-1" width="100%" height="175" row="0"
+                   borderBottomWidth="1" borderBottomColor="gray">
 
-    <Label class="text-primary text-xl m-l-12 m-t-12" text="{{projectDetail.street_address}}"></Label>
-    <Label text="{{projectDetail.city}}, {{projectDetail.state}} {{projectDetail.zip_code}} "></Label>
-</StackLayout>
+        <Image src="{{CDN_URL}}{{projectDetail.cloudinary_publicid}}" class="m-4" width="50%"></Image>
+
+        <GridLayout rows="auto, auto, auto, auto" columns="auto, auto, auto, auto" width="50%" class="m-t-4 m-l-4 p-8">
+            <Label row="0" col="0" class=" h3" text="Purchase: "></Label>
+            <Label row="0" col="1" class=" h3" text="{{projectDetail.purchase_price | currency}}"></Label>
+            <Label row="1" col="0" class=" h3" text="Expenses: "></Label>
+            <Label row="1" col="1" class=" h3" text="{{projectDetail.total_expenses | currency}}"></Label>
+            <Label row="2" col="0" class=" h3" text="Est. Sale: "></Label>
+            <Label row="2" col="1" class=" h3" text="{{projectDetail.sale_price | currency}}"></Label>
+            <Label row="3" col="0" class=" h3" text="Est. Profit: "></Label>
+            <Label row="3" col="1" class=" h3" text="{{projectDetail.net_profit | currency}}"></Label>
+        </GridLayout>
+
+        <!--TODO: run this into a grid-->
+    </FlexboxLayout>
+
+
+
+
+
+
+    <!--bottom navigation buttons-->
+    <FlexboxLayout flexDirection="row" justifyContent="space-between" row="2">
+        <StackLayout orientation="vertical" horizontalAlignment="center">
+            <Label text="add room" class="p-b-4 text-center"></Label>
+            <Button shadow="15" textWrap="true" width="65" height="65" class=" bg-blue round-btn text-2xl  good-btn">
+                <FormattedString>
+                    <Span text="&#xf236;" class="fas text-3xl"></Span>
+                </FormattedString>
+            </Button>
+        </StackLayout>
+
+        <StackLayout orientation="vertical" horizontalAlignment="center">
+            <Label text="add expense" class="p-b-4 text-center"></Label>
+            <Button shadow="15" textWrap="true" width="65" height="65" class="round-btn bg-green text-2xl  good-btn">
+                <FormattedString>
+                    <Span text="&#xf3d1;" class="far text-3xl"></Span>
+                </FormattedString>
+            </Button>
+        </StackLayout>
+
+        <StackLayout orientation="vertical" horizontalAlignment="center">
+            <Label text="add task" class="p-b-4 text-center"></Label>
+            <Button shadow="15" textWrap="true" width="65" height="65" class="round-btn bg-yellow text-2xl  good-btn">
+                <FormattedString>
+                    <Span text="&#xf0ae;" class="fas text-3xl"></Span>
+                </FormattedString>
+            </Button>
+        </StackLayout>
+    </FlexboxLayout>
+
+
+</GridLayout>
+
