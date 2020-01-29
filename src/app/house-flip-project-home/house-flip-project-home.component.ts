@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from '@angular/router';
-import {Project, Room} from '~/app/models/project_models';
+import {Project, ProjectData, Room} from '~/app/models/project_models';
 import {FlippinNotesService} from "~/app/services/flippin-notes.service";
 import { Router } from "@angular/router";
 import {Observable} from "tns-core-modules/data/observable";
@@ -25,11 +25,10 @@ export class HouseFlipProjectHomeComponent implements OnInit {
     // @ts-ignore
     project: Observable<Project>;
     rooms: Room[];
+    projectSummary: ProjectData;
     constructor( private route:ActivatedRoute, private cms: FlippinNotesService, private router: Router) {
-        /* ***********************************************************
-        * Use the constructor to inject app services that you need in this component.
-        * whny
-        *************************************************************/
+        this.projectSummary = new ProjectData();
+        this.projectSummary.total_sqft = 0;
     }
     routerAction(id: any) {
         this.router.navigate(["room-detail", id])
@@ -39,9 +38,16 @@ export class HouseFlipProjectHomeComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.id = params['id'];
         });
-        this.roomsGridLayout = "auto";
+
         this.cms.getProject(this.id).subscribe(data => {
             this.projectDetail = data;
+            this.projectSummary.room_count = data.rooms.length;
+            this.projectSummary.expense_count = data.expenses.length;
+            this.projectSummary.task_count = data.tasks.length;
+            data.rooms.forEach((value) => {
+                console.log(this.projectSummary.total_sqft);
+                this.projectSummary.total_sqft = this.projectSummary.total_sqft + value.area;
+            });
             this.cms.getProjectRoomList(this.id).subscribe(data => {
                 this.rooms = data;
             });

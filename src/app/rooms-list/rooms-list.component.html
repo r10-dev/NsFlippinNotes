@@ -1,1 +1,11 @@
 <Button text="rooms-list works!" class="btn btn-primary"></Button>
+
+
+<ListView [items]="rooms" row="1">
+    <ng-template let-rooms="item">
+        <GridLayout rows="auto, *" columns="auto, auto">
+            <Label row="0" col="0" class=" h3" text="Purchase: {{rooms.room_name}}"></Label>
+
+        </GridLayout>
+    </ng-template>
+</ListView>

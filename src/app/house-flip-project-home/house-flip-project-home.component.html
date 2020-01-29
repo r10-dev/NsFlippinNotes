@@ -2,33 +2,35 @@
     <Label class="action-bar-title" text="{{projectDetail.project_name}}" class="text-uppercase text-2xl"></Label>
 </ActionBar>
 
-<GridLayout rows="175, *, 100">
-    <FlexboxLayout flexDirection="row" justifyContent="flex-start" class="m-y-1" width="100%" height="175" row="0"
-                   borderBottomWidth="1" borderBottomColor="gray">
-
-        <Image src="{{CDN_URL}}{{projectDetail.cloudinary_publicid}}" class="m-4" width="50%"></Image>
-
-        <GridLayout rows="auto, auto, auto, auto" columns="auto, auto, auto, auto" width="50%" class="m-t-4 m-l-4 p-8">
-            <Label row="0" col="0" class=" h3" text="Purchase: "></Label>
-            <Label row="0" col="1" class=" h3" text="{{projectDetail.purchase_price | currency}}"></Label>
-            <Label row="1" col="0" class=" h3" text="Expenses: "></Label>
-            <Label row="1" col="1" class=" h3" text="{{projectDetail.total_expenses | currency}}"></Label>
-            <Label row="2" col="0" class=" h3" text="Est. Sale: "></Label>
-            <Label row="2" col="1" class=" h3" text="{{projectDetail.sale_price | currency}}"></Label>
-            <Label row="3" col="0" class=" h3" text="Est. Profit: "></Label>
-            <Label row="3" col="1" class=" h3" text="{{projectDetail.net_profit | currency}}"></Label>
+<GridLayout rows="*, 100">
+    <ScrollView>
+        <GridLayout rows="175,*, *">
+            <StackLayout borderBottomWidth="1" borderBottomColor="gray" row="0">
+                <Image src="{{CDN_URL}}{{projectDetail.cloudinary_publicid}}" class="m-4" ></Image>
+            </StackLayout>
+            <!--revenue money section-->
+            <FlexboxLayout flexDirection="row" justifyContent="space-between" class="m-y-16 m-x-12" row="1"
+                           borderBottomWidth="1" borderBottomColor="gray">
+                <StackLayout orientation="vertical" horizontalAlignment="center">
+                    <Label class="text-2xl p-b-4 font-weight-bold" text="Purchase: {{projectDetail.purchase_price | currency}} "></Label>
+                    <Label class="text-2xl p-b-4 font-weight-bold" text="Expenses: {{projectDetail.total_expenses | currency}}" ></Label>
+                    <Label class="text-2xl p-b-4 font-weight-bold" text="Est. Sale: {{projectDetail.sale_price | currency}}"></Label>
+                    <Label class="text-2xl p-b-4 font-weight-bold" text="Est. Profit: {{projectDetail.net_profit | currency}}"></Label>
+                </StackLayout>
+            </FlexboxLayout>
+            <!--information section-->
+            <FlexboxLayout flexDirection="row" justifyContent="space-between" row="2" class="m-y-16 m-x-12" borderBottomWidth="1" borderBottomColor="gray">
+                <StackLayout orientation="vertical" horizontalAlignment="center">
+                    <Label text="# of Rooms: {{projectSummary.room_count}}" class="text-2xl p-b-4 font-weight-bold"></Label>
+                    <Label text="Total SqFt: {{projectSummary.total_sqft}}" class="text-2xl p-b-4 font-weight-bold"></Label>
+                    <Label text="# of Expense Entries: {{projectSummary.expense_count}}" class="text-2xl p-b-4 font-weight-bold"></Label>
+                    <Label text="# of Tasks: {{projectSummary.task_count}}" class="text-2xl p-b-4 font-weight-bold"></Label>
+                </StackLayout>
+            </FlexboxLayout>
         </GridLayout>
-
-        <!--TODO: run this into a grid-->
-    </FlexboxLayout>
-
-
-
-
-
-
+    </ScrollView>
     <!--bottom navigation buttons-->
-    <FlexboxLayout flexDirection="row" justifyContent="space-between" row="2">
+    <FlexboxLayout flexDirection="row" justifyContent="space-between" row="1">
         <StackLayout orientation="vertical" horizontalAlignment="center">
             <Label text="add room" class="p-b-4 text-center"></Label>
             <Button shadow="15" textWrap="true" width="65" height="65" class=" bg-blue round-btn text-2xl  good-btn">

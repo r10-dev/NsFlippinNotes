@@ -1,4 +1,9 @@
-
+export class ProjectData {
+    room_count: number;
+    total_sqft: number;
+    task_count: number;
+    expense_count: number;
+}
 
 export class Project {
     city: string;
